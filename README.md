@@ -4,40 +4,6 @@
 
 ![giphy (2)](https://user-images.githubusercontent.com/76580/167435963-34b5ddf0-e318-446a-b59f-2edeed3eb030.gif)
 
-## Introduction
-
-E-commerce has proven to be a big game-changer in the 21st-century economy. As one of the largest sales channels, second only to physical retail, e-commerce [is expected](https://www.statista.com/statistics/379046/worldwide-retail-e-commerce-sales/) to be responsible for 6.3 trillion USD in worldwide sales by the year 2024.
-
-E-commerce is a highly competitive business, and building a positive user experience is crucial to retaining customers and improving conversions. It is not uncommon for companies to make a significant investment in optimizing the purchase flow on their e-commerce platforms.
-
-One of the most significant components of this experience is **the shopping cart**.
-
-In this lab, we will be building the **IronCart**, a shopping cart for the unofficial Ironhack merchandising store. Visitors should be able to add and remove products from the shopping cart, and modify the number (quantity) of items that they want to purchase. Additionally, users should be able to see the subtotal and total price for the items they have added.
-
-## Requirements
-
-- Fork this repo.
-
-- Clone it to your machine.
-
-  
-
-## Submission
-
-- Upon completion, run the following commands:
-
-```bash
-$ git add .
-$ git commit -m "Solved lab"
-$ git push origin master
-```
-
-- Create a Pull Request so that your TAs can check your work.
-
-  
-
-
-
 ## Instructions
 
 You will do most of your work in the `js/index.js` file. We added the initial markup in `index.html` and some basic styling. While developing, make sure you use the same class names as those already used (and available in the CSS file) to make our shopping cart nice and clean.
