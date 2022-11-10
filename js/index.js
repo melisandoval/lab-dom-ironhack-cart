@@ -6,18 +6,6 @@ let domTotal = document.querySelector('#total-value span');
 // domProductsParent store the node element that is the parent of all the product rows:
 const domProductsParent = document.querySelector('#cart tbody');
 
-// calculateAll() function is called by button "Calculate Prices":
-function calculateAll() {
-  const products = document.querySelectorAll('.product');
-
-  let total = 0;
-  products.forEach((product) => {
-    total += updateSubtotal(product);
-  });
-
-  return (domTotal.innerHTML = total);
-}
-
 // updateSubtotal(product) function is called by calculateAll() function:
 function updateSubtotal(product) {
   const domPrice = Number(product.querySelector(`.price span`).innerHTML);
@@ -25,6 +13,19 @@ function updateSubtotal(product) {
   const domSubTotal = product.querySelector(`.subtotal span`);
 
   return (domSubTotal.innerHTML = domPrice * domQuantity);
+}
+
+// calculateAll() function is called by button "Calculate Prices":
+function calculateAll() {
+  const products = document.querySelectorAll('.product');
+
+  let total = 0;
+
+  products.forEach((product) => {
+    total += updateSubtotal(product);
+  });
+
+  return (domTotal.innerHTML = total);
 }
 
 // removeProduct() is called by all "Remove" buttons:
