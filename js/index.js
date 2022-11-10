@@ -44,7 +44,7 @@ function removeProduct(event) {
 
 // createProduct() is called by "Create Product" button
 // and its function is add the new product to the cart list
-// and clean the input fields
+// and clean the Create Product row input fields
 function createProduct() {
   let domProductName = document.querySelector(
     '.create-product input[type=text]'
@@ -63,7 +63,7 @@ function createProduct() {
 }
 
 // createNewProductRow() is called by createProduct() and
-// its function is create the dom element that will be added by createProduct()
+// its function is create the row dom element that will be added to the table by createProduct()
 function createNewProductRow(productName, unitPrice) {
   const newRow = document.createElement('tr');
   newRow.setAttribute('class', 'product');
