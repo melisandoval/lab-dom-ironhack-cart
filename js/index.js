@@ -1,22 +1,3 @@
-//
-// init all the buttons functionality:
-window.addEventListener('load', () => {
-  //
-  // attach calculateAll() to "Calculate Prices" button:
-  const calculatePricesBtn = document.getElementById('calculate');
-  calculatePricesBtn.addEventListener('click', calculateAll);
-
-  // attach removeProduct() to all "Remove" buttons:
-  const removeButtons = document.querySelectorAll('.btn-remove');
-  removeButtons.forEach((button) =>
-    button.addEventListener('click', removeProduct)
-  );
-
-  // attach createProduct() to "Create Product" button:
-  const createProductBtn = document.getElementById('create');
-  createProductBtn.addEventListener('click', createProduct);
-});
-
 // global scope variables:
 
 // domTotal variable store the value displayed in the H2 that says "Total"
@@ -105,3 +86,21 @@ function createNewProductRow(productName, unitPrice) {
 
   return newRow;
 }
+
+// init all the buttons functionality:
+window.addEventListener('load', () => {
+  //
+  // attach calculateAll() to "Calculate Prices" button:
+  const calculatePricesBtn = document.getElementById('calculate');
+  calculatePricesBtn.addEventListener('click', calculateAll);
+
+  // attach removeProduct() to all "Remove" buttons:
+  const removeButtons = document.querySelectorAll('.btn-remove');
+  removeButtons.forEach((button) =>
+    button.addEventListener('click', removeProduct)
+  );
+
+  // attach createProduct() to "Create Product" button:
+  const createProductBtn = document.getElementById('create');
+  createProductBtn.addEventListener('click', createProduct);
+});
