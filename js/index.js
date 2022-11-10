@@ -1,5 +1,7 @@
+//
 // init all the buttons functionality:
 window.addEventListener('load', () => {
+  //
   // attach calculateAll() to "Calculate Prices" button:
   const calculatePricesBtn = document.getElementById('calculate');
   calculatePricesBtn.addEventListener('click', calculateAll);
@@ -9,17 +11,25 @@ window.addEventListener('load', () => {
   removeButtons.forEach((button) =>
     button.addEventListener('click', removeProduct)
   );
+
+  // attach createProduct() to "Create Product" button:
+  const createProductBtn = document.getElementById('create');
+  createProductBtn.addEventListener('click', createProduct);
 });
 
-// this variable will be used for more than one function:
+// global scope variables:
+
+// domTotal variable store the value displayed in the H2 that says "Total"
 let domTotal = document.querySelector('#total-value span');
+
+// domProductsParent store the node element that is the parent of all the product rows:
+const domProductsParent = document.querySelector('#cart tbody');
 
 // calculateAll() function is called by button "Calculate Prices":
 function calculateAll() {
   const products = document.querySelectorAll('.product');
 
   let total = 0;
-
   products.forEach((product) => {
     total += updateSubtotal(product);
   });
@@ -36,24 +46,58 @@ function updateSubtotal(product) {
   return (domSubTotal.innerHTML = domPrice * domQuantity);
 }
 
+// removeProduct() is called by all "Remove" buttons:
 function removeProduct(event) {
-  const target = event.currentTarget;
-  const domProductParent = document.querySelector('#cart tbody');
-  const domProduct = document.querySelector('.product');
+  const currentRowProduct = event.path[2];
 
   let domProductSubtotal = Number(
-    domProduct.querySelector('.subtotal span').innerHTML
+    currentRowProduct.querySelector('.subtotal span').innerHTML
   );
 
-  if (domProduct.contains(target)) {
-    domProductParent.removeChild(domProduct);
+  domProductsParent.removeChild(currentRowProduct);
 
-    domTotal.innerHTML -= domProductSubtotal;
-  }
+  domTotal.innerHTML -= domProductSubtotal;
 }
 
-// ITERATION 5
-
+// createProduct() is called by "Create Product" button
+// and its function is add the new product to the cart list:
 function createProduct() {
-  //... your code goes here
+  const domProductName = document.querySelector(
+    '.create-product input[type=text]'
+  ).value;
+
+  const domUnitPrice = document.querySelector(
+    '.create-product input[type=number]'
+  ).value;
+
+  domProductsParent.appendChild(
+    createNewProductRow(domProductName, domUnitPrice)
+  );
+}
+
+// createNewProductRow() is called by createProduct() and
+// its function is create the dom element that will be added by createProduct()
+function createNewProductRow(productName, unitPrice) {
+  const newRow = document.createElement('tr');
+  newRow.setAttribute('class', 'product');
+
+  newRow.innerHTML = `
+        <tr>
+          <td class="name">
+            <span>${productName}</span>
+          </td>
+          <td class="price">$<span>${unitPrice}</span></td>
+          <td class="quantity">
+            <input type="number" value="0" min="0" placeholder="Quantity" />
+          </td>
+          <td class="subtotal">$<span>0</span></td>
+          <td class="action">
+            <button class="btn btn-remove">Remove</button>
+          </td>
+        </tr>`;
+
+  const newRowRemoveBtn = newRow.querySelector('.btn-remove');
+  newRowRemoveBtn.addEventListener('click', removeProduct);
+
+  return newRow;
 }
