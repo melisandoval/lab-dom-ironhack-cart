@@ -60,7 +60,8 @@ function removeProduct(event) {
 }
 
 // createProduct() is called by "Create Product" button
-// and its function is add the new product to the cart list:
+// and its function is add the new product to the cart list
+// and clean the input fields
 function createProduct() {
   let domProductName = document.querySelector(
     '.create-product input[type=text]'
