@@ -73,7 +73,7 @@ function createNewProductRow(productName, unitPrice) {
           <td class="name">
             <span>${productName}</span>
           </td>
-          <td class="price">$<span>${unitPrice}</span></td>
+          <td class="price">$<span>${unitPrice}.00</span></td>
           <td class="quantity">
             <input type="number" value="0" min="0" placeholder="Quantity" />
           </td>
