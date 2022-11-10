@@ -62,17 +62,20 @@ function removeProduct(event) {
 // createProduct() is called by "Create Product" button
 // and its function is add the new product to the cart list:
 function createProduct() {
-  const domProductName = document.querySelector(
+  let domProductName = document.querySelector(
     '.create-product input[type=text]'
-  ).value;
+  );
 
-  const domUnitPrice = document.querySelector(
+  let domUnitPrice = document.querySelector(
     '.create-product input[type=number]'
-  ).value;
+  );
 
   domProductsParent.appendChild(
-    createNewProductRow(domProductName, domUnitPrice)
+    createNewProductRow(domProductName.value, domUnitPrice.value)
   );
+
+  domProductName.value = '';
+  domUnitPrice.value = 0;
 }
 
 // createNewProductRow() is called by createProduct() and
