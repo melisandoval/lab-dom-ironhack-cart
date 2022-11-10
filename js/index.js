@@ -21,16 +21,17 @@ function calculateAll() {
 
   let total = 0;
 
-  products.forEach((product) => {
-    total += updateSubtotal(product);
-  });
+  products.forEach((product) => (total += updateSubtotal(product)));
 
   return (domTotal.innerHTML = total);
 }
 
 // removeProduct() is called by all "Remove" buttons:
 function removeProduct(event) {
-  const currentRowProduct = event.path[2];
+  // const currentRowProduct = event.path[2];
+
+  // another option to get the get the current row (using parentNode and remove()):
+  const currentRowProduct = event.currentTarget.parentNode.parentNode.remove();
 
   let domProductSubtotal = Number(
     currentRowProduct.querySelector('.subtotal span').innerHTML
